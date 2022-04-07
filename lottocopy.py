@@ -1,26 +1,26 @@
 # lotto picker by manny juan  (juanm@wellsfargo.com or manny@bdt.com)
-
 from random import randint
 
 
+def get_number():
+    return int(randint(1, 69))
+
+
+def get_power():
+    return int(randint(1, 26))
+
+
 def pick_lotto():
-    maxm = 53
-    maxj = 6
-    m = maxm
-    # create all numbers from 0 to m
-    r = range(m + 1)
-    # start with an empty result
-    v = []
-    for j in range(maxj):
-        # get ith number from r...       
-        i = randint(1, m)
-        n = r[i]
-        # remove it from r...
-        r[i:i + 1] = []
-        m = m - 1
-        # and append to the result
-        v.append(n)
-    return v
+    regular = []
+    ticket = []
+    for i in range(0, 5):
+        number = get_number()
+        while regular.count(number) > 0:
+            number = get_number()
+        regular.append(number)
+        regular.sort()
+    ticket.append(get_power())
+    return tuple(regular + ticket)
 
 
 def run():
